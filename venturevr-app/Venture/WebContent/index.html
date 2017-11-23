@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="home">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Venture</title>
+    <script src="webapp/lib/angular/angular.min.js"></script>
+    <script src="webapp/lib/angular/angular-route.min.js"></script>
+    <script src="webapp/lib/angular/angular-animate.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
+    
+    <script src="webapp/controller/app.js"></script>
+    <script src="webapp/controller/home.js"></script>
+    <script src="webapp/service/authentication.js"></script>
+    <script src="webapp/controller/registration.js"></script>
+    <script src="webapp/controller/success.js"></script>
+    
+      
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAwRwZCsXRDrBUDE8l45GWwECXBJP_AslI",
+      authDomain: "angularregistration07.firebaseapp.com",
+      databaseURL: "https://angularregistration07.firebaseio.com",
+      storageBucket: "angularregistration07.appspot.com",
+      messagingSenderId: "961781361498"
+    };
+    firebase.initializeApp(config);
+  </script>  
+  <script src="https://cdn.firebase.com/libs/angularfire/2.1.0/angularfire.min.js"></script>
+    
+    <link href="webapp/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="webapp/css/styles.css" rel="stylesheet"> 
+
+  </head>
+  <body>
+  
+    <div id="nav"></div> 
+    
+    <div ng-view></div>
+    
+    <div id="footer"></div> 
+    
+    <script src="webapp/vendor/jquery/jquery.min.js"></script>
+    <script src="webapp/vendor/popper/popper.min.js"></script>
+    <script src="webapp/vendor/bootstrap/js/bootstrap.min.js"></script>
+    
+    <script> 
+		$(function(){
+		  $("#nav").load("webapp/view/nav.html"); 
+		  $("#footer").load("webapp/view/footer.html"); 
+		});
+	</script> 
+	
+  </body>
+
+</html>

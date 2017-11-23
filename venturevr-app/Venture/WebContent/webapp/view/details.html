@@ -1,0 +1,18 @@
+<section id="wrap">
+  <div ng-model="details" class="container">
+    <a href="#/details/{{prevItem}}" class="btn btn-left">&lt;</a>
+    <a href="#/details/{{nextItem}}" class="btn btn-right">&gt;</a>
+    <div>
+    <img ng-src="{{details.estImgPath + details.estImgName + '.' + details.estImgFormat}}" 
+    class="maxImageSize" alt="Photo of {{details.estImgName}}"> 
+    </div>
+    <label><a href="#/est_videos/{{details.estId}}">To Videos</a></label>
+    <h1>{{details.estName}}</h1>
+    <div>
+      <h3>{{details.address}}</h3>
+      <h3>{{details.estCreated}}</h3>
+      <div>{{details.estAbout}}</div>
+    </div>
+    <a href="#/index">&laquo; Back to search</a>
+  </div>
+</section> 

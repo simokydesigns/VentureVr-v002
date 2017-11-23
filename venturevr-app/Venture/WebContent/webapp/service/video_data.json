@@ -1,0 +1,26 @@
+[
+  {
+    "name":"Venture",
+    "shortname":"venture",
+    "video_name":"360",
+    "video_path": "webapp/video/",
+    "video_format": "webm",
+    "bio":"fun fun fun"
+  },
+  {
+    "name":"test",
+    "shortname":"test1.mp4",
+    "video_name":"360",
+    "video_path": "webapp/video/",
+    "video_format": "webm",
+    "bio":"fun fun fun"
+  },
+  {
+    "name":"rollercoaster",
+    "shortname":"vr_roller_coaster",
+    "video_name":"360",
+    "video_path": "webapp/video/",
+    "video_format": "webm",
+    "bio":"fun fun fun"
+  }
+]

@@ -1,0 +1,28 @@
+<section id="wrap">
+    <div class="container">
+    <br>
+	    <h2>VR Video Directory</h2>
+		    <label>Search Country: </label>
+		    <input ng-model="query" placeholder="Search Here!" autofocus>
+		    <label>Location: </label>
+		    <input ng-model="locationFilter" placeholder="Search Here!" autofocus>
+		  <br>
+		    <label>
+		      <input type="radio" ng-model="direction" name="direction" checked>
+		      ascending
+		     </label>
+		    <label>
+		      <input type="radio" ng-model="direction" name="direction" value="reverse">
+		      descending
+		    </label> 	
+      <div class="row text-center text-lg-left" ng-show="query">
+
+        <div class="col-lg-3 col-lg-3 col-lg-3 col-lg-3" ng-animate="'animate'" ng-repeat="item in est | limitTo: 20 |filter: query | filter: locationFilter |orderBy: estOrder:direction">
+        <div><label>{{item.estName}}</label></div>
+          <a href="#/details/{{item.estId}}">
+             <img ng-src="{{item.estImgPath + item.estImgName + '.' + item.estImgFormat}}" class="maxImageSize" alt="Photo of {{item.estImgName}}">
+          </a>
+        </div>  
+      </div> 
+    </div>
+ </section>
