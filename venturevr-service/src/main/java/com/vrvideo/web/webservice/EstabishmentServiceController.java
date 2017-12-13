@@ -1,7 +1,6 @@
 package com.vrvideo.web.webservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +26,7 @@ public class EstabishmentServiceController {
 	 
 	    
 
-	    @CrossOrigin
+	   // @CrossOrigin
 	    @RequestMapping(method= RequestMethod.GET, value="/est/{userId}")
 	    public Establishment getAllEstablishmentsByUserId(@PathVariable(value="userId")Long userId){
 	
@@ -36,7 +35,7 @@ public class EstabishmentServiceController {
 	    
 	    
 	    
-	    @CrossOrigin
+	   // @CrossOrigin
 	    @RequestMapping(method= RequestMethod.GET, value="/est")
 	    public Iterable<Establishment> getAllEstablishments(){
 	        return this.establishmentRepo.findAll();

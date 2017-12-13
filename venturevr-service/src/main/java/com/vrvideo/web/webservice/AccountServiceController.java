@@ -1,7 +1,10 @@
 package com.vrvideo.web.webservice;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,8 +16,6 @@ import com.vrvideo.data.entity.Account;
 import com.vrvideo.data.repository.AccountRepository;
 
 
-
-
 @RestController
 @RequestMapping(value="/api")
 
@@ -22,22 +23,60 @@ import com.vrvideo.data.repository.AccountRepository;
 		    @Autowired
 		    private AccountRepository accountRepo;
 
-		    @CrossOrigin
+		    
 		    @RequestMapping(method= RequestMethod.GET, value="/account/{accId}")
-		    public Account getAccountByUserId(@PathVariable(value="userId")Long userId){
-		        return this.accountRepo.findAccountByUserId(userId);
+		    public Account getAccountByAccountId(@PathVariable(value="accId")Long accId, Principal principal){
+		    
+		    	Account currentAcc = accountRepo.findByUserName(principal.getName());
+		    	
+		    	if(currentAcc.getAccId() == accId) {
+		    	
+		        return currentAcc;
+		        
+		    	}else
+		    		
+		    	return null;
 		    };
 		    
-		    @CrossOrigin
+		    @RequestMapping(method= RequestMethod.GET, value="/userlogin/{userName}")
+		    public Account getAccountByAccountId(@PathVariable(value="userName")String userName, Principal principal){
+		    
+		    	Account currentAcc = accountRepo.findByUserName(principal.getName());
+		    	
+		    	if(currentAcc.getUserName().equals(userName)) {
+		    	
+		        return currentAcc;
+		        
+		    	}else
+		    		
+		    	return null;
+		    };
+		    
+		    @RequestMapping(value = "/{accId}", method = RequestMethod.DELETE)
+		    public ResponseEntity<Void> deleteAccount(@PathVariable long accId, Principal principal) {
+		    	Account currentAccount = accountRepo.findByUserName(principal.getName());
+		    	
+		    	if (currentAccount.getAccId() == accId) {
+		    		accountRepo.delete(accId);
+		    		return new ResponseEntity<Void>(HttpStatus.OK);
+		    	} else {
+		    		return new ResponseEntity<Void>(HttpStatus.UNAUTHORIZED);
+		    	}
+		    }
+		    
+		
 		    @RequestMapping(method= RequestMethod.GET, value="/accs")
 		    public Iterable<Account> getAllAccounts(){
 		        return this.accountRepo.findAll();
-	};
+	        };
 	
-    @RequestMapping(method= RequestMethod.POST, consumes = "application/json", value="/newacc")
-    @ResponseBody
-    public void addNewAccount(@RequestBody Account newAccount){
-   
-    	accountRepo.save(new Account(newAccount.getUserId(), newAccount.getUserName(), newAccount.getPassword(), newAccount.getAccDetails()));	    	
-    }
+		    @RequestMapping(method= RequestMethod.POST, consumes = "application/json", value="/newacc")
+		    @ResponseBody
+		    public void addNewAccount(@RequestBody Account newAccount){
+		   
+		    	accountRepo.save(new Account(newAccount.getFirstName(), newAccount.getLastName(), 
+		    			newAccount.getAddress(), newAccount.getContactNo(), newAccount.getEmail(), 
+		    			newAccount.getBio(), newAccount.getUserName(), newAccount.getAccDetails()));	    	
+		    }
+		    
 }

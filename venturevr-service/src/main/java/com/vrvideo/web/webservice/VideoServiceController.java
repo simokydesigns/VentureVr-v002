@@ -3,7 +3,6 @@ package com.vrvideo.web.webservice;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,13 +23,13 @@ import com.vrvideo.data.repository.VideoRepository;
 		    @Autowired
 		    private VideoRepository videoRepo;
 
-		    @CrossOrigin
+		    //@CrossOrigin
 		    @RequestMapping(method= RequestMethod.GET, value="/videos/{estId}")
 		    public List<Video> getAllVideosById(@PathVariable(value="estId")Long estId){
 		        return this.videoRepo.findAllVideosByEstId(estId);
 		    };
 		    
-		    @CrossOrigin
+		    //@CrossOrigin
 		    @RequestMapping(method= RequestMethod.GET, value="/videos")
 		    public Iterable<Video> getAllVideos(){
 		        return this.videoRepo.findAll();

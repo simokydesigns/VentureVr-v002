@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="Venture-0.0.1-SNAPSHOT">
+    <wb-module deploy-name="venturevr-app-0.0.1-SNAPSHOT">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/scr/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/scr/test/java"/>
-        <property name="java-output-path" value="/Venture/build/classes"/>
-        <property name="context-root" value="Venture"/>
+        <property name="java-output-path" value="/venturevr-app/build/classes"/>
+        <property name="context-root" value="venturevr-app"/>
     </wb-module>
 </project-modules>

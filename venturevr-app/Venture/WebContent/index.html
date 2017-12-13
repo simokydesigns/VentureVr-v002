@@ -12,18 +12,15 @@
     <script src="webapp/lib/angular/angular.min.js"></script>
     <script src="webapp/lib/angular/angular-route.min.js"></script>
     <script src="webapp/lib/angular/angular-animate.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
+    
+    <!-- <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script> -->
     
     <script src="webapp/controller/app.js"></script>
     <script src="webapp/controller/home.js"></script>
-    <script src="webapp/service/authentication.js"></script>
     <script src="webapp/controller/registration.js"></script>
-    <script src="webapp/controller/success.js"></script>
-    
-    <script src="https://cdn.firebase.com/libs/angularfire/2.1.0/angularfire.min.js"></script> 
-    <script src="webapp/service/init.js"></script>  
-   
-    
+    <script src="webapp/service/security/authentication.js"></script>
+    <script src="webapp/service/security/auth_events.js"></script>
+    <script src="webapp/service/security/auth_service.js"></script>
     <link href="webapp/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="webapp/css/styles.css" rel="stylesheet"> 
 
@@ -35,7 +32,7 @@
     <div ng-view></div>
     
     <div id="footer"></div> 
-    
+
     <script src="webapp/vendor/jquery/jquery.min.js"></script>
     <script src="webapp/vendor/popper/popper.min.js"></script>
     <script src="webapp/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -46,7 +43,6 @@
 		  $("#footer").load("webapp/view/footer.html"); 
 		});
 	</script> 
-	
   </body>
 
 </html>

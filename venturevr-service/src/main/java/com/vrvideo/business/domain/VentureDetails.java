@@ -2,12 +2,10 @@ package com.vrvideo.business.domain;
 
 import com.vrvideo.data.entity.Video;
 
-import antlr.collections.List;
-
 
 public class VentureDetails {
 	
-    private long userId;
+    private long accId;
     private long estId;
     private String estAbout;
     private String firstName;
@@ -15,10 +13,10 @@ public class VentureDetails {
     private String estCreated;
     private Iterable<Video>allVideos;
     
-	public VentureDetails(long userId, long estId, String estAbout, String firstName, String lastName,
+	public VentureDetails(long accId, long estId, String estAbout, String firstName, String lastName,
 			String estCreated, Iterable<Video>allVideos) {
 		super();
-		this.userId = userId;
+		this.accId = accId;
 		this.estId = estId;
 		this.estAbout = estAbout;
 		this.firstName = firstName;
@@ -27,12 +25,12 @@ public class VentureDetails {
 		this.allVideos = allVideos;
 	}
 
-	public long getUserId() {
-		return userId;
+	public long getAccId() {
+		return accId;
 	}
 
-	public void setUserId(long userId) {
-		this.userId = userId;
+	public void setAccId(long userId) {
+		this.accId = userId;
 	}
 
 	public long getEstId() {

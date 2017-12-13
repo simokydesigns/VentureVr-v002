@@ -19,12 +19,20 @@ public class Account {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="acc_id")
 	private long accId;
-	@Column(name="user_id")
-	private String userId;
+	@Column(name="last_name")
+	private String lastName;
+	@Column(name="first_name")
+	private String firstName;
+	@Column(name="address")
+	private String address;
+	@Column(name="contact_no")
+	private String contactNo;
+	@Column(name="email")
+	private String email;
+	@Column(name="bio")
+	private String bio;
 	@Column(name="user_name")
 	private String userName;
-	@Column(name="password")
-	private String password;
 	@Column(name="acc_details")
 	private String accDetails;
 	@Column(name="date_account_created")
@@ -34,17 +42,18 @@ public class Account {
 		super();
 	}
 
-	
-
-	public Account(String userId, String userName, String password, String accDetails) {
+	public Account(String lastName, String firstName, String address, String contactNo, String email, String bio,
+			String userName, String accDetails) {
 		super();
-		this.userId = userId;
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.address = address;
+		this.contactNo = contactNo;
+		this.email = email;
+		this.bio = bio;
 		this.userName = userName;
-		this.password = password;
 		this.accDetails = accDetails;
 	}
-
-
 
 	public long getAccId() {
 		return accId;
@@ -54,14 +63,53 @@ public class Account {
 		this.accId = accId;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
-	
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getContactNo() {
+		return contactNo;
+	}
+
+	public void setContactNo(String contactNo) {
+		this.contactNo = contactNo;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getBio() {
+		return bio;
+	}
+
+	public void setBio(String bio) {
+		this.bio = bio;
+	}
 
 	public String getUserName() {
 		return userName;
@@ -69,14 +117,6 @@ public class Account {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public String getAccDetails() {
@@ -95,10 +135,10 @@ public class Account {
 		this.dateAccountCreated = dateAccountCreated;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Account [accId=" + accId + ", userId=" + userId + ", userName=" + userName + ", password=" + password
+		return "Account [accId=" + accId + ", lastName=" + lastName + ", firstName=" + firstName + ", address="
+				+ address + ", contactNo=" + contactNo + ", email=" + email + ", bio=" + bio + ", userName=" + userName
 				+ ", accDetails=" + accDetails + ", dateAccountCreated=" + dateAccountCreated + "]";
 	}
 	

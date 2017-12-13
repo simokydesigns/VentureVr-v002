@@ -1,10 +1,10 @@
 {
-  "name": "venture",
+  "name": "venturevr",
   "version": "0.0.1",
   "description": "An application to display web vr videos",
   "repository": {
     "type": "git",
-    "url": "https://github.com/simokydesigns/Venture"
+    "url": "https://github.com/simokydesigns/VentureVr-v002"
   },
   "author": "Simon Kelly",
   "devDependencies": {

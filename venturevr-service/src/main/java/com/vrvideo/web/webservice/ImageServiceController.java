@@ -1,7 +1,6 @@
 package com.vrvideo.web.webservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,13 +20,13 @@ import com.vrvideo.data.repository.ImageRepository;
 		    @Autowired
 		    private ImageRepository imgRepo;
 
-		    @CrossOrigin
+		    //@CrossOrigin
 		    @RequestMapping(method= RequestMethod.GET, value="/images/{estId}")
 		    public Image getAllImagesById(@PathVariable(value="estId")Long estId){
 		        return this.imgRepo.findImageByEstId(estId);
 		    };
 		    
-		    @CrossOrigin
+		    //@CrossOrigin
 		    @RequestMapping(method= RequestMethod.GET, value="/images")
 		    public Iterable<Image> getAllImages(){
 		        return this.imgRepo.findAll();

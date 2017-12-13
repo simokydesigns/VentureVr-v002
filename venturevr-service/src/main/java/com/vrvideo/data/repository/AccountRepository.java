@@ -5,6 +5,10 @@ import com.vrvideo.data.entity.Account;
 
 public interface AccountRepository extends CrudRepository<Account, Long> {
 
-	Account findAccountByUserId(long userId);
+	Account findAccountByAccId(long accId);
+	
+	Account findByUserName(String username);
+	
+	Account findAccountByFirstNameAndLastName(String firstName, String lastName);
 
 }
