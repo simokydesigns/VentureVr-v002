@@ -7,9 +7,9 @@ home.controller('RegistrationController', ['$scope', '$rootScope', '$http', 'AUT
 	
 	$scope.auth = function() {
 
-	        Authentication.requireAuth($scope.user).then(function(user) {
+	        Authentication.requireAuth($scope.user).then(function(data) {
 	            $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-	            $scope.login($scope.user);
+	            $scope.login();
 	          }, function () {
 	            $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
 	          });     
@@ -18,12 +18,12 @@ home.controller('RegistrationController', ['$scope', '$rootScope', '$http', 'AUT
     $scope.login = function() {
 
         Authentication.login($scope.user).then(function(user) {
-            $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+        	$scope.message =AUTH_EVENTS.loginSuccess;
             $scope.setCurrentUser(user.userName);
             window.location = "#/profile"; 
             
           }, function () {
-            $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+        	  $scope.message = AUTH_EVENTS.loginFailed;
           });
           
     };
@@ -35,26 +35,13 @@ home.controller('RegistrationController', ['$scope', '$rootScope', '$http', 'AUT
     };
 
     $scope.register = function() {
-        // Authentication.register($scope.user);
-
-        var dataUser = {
-            "userName": this.user.username,
-            "password": this.user.password
-        };
-        
-        $http.post('http://localhost:8080/venture-service/api/newuser/', JSON.stringify(dataUser)).then(function(response) {
-            //if (response.dataUser)
-                $scope.message = "You have registered successfully! Please login to create profile.";
-                $scope.state = "success";
-                //window.location = "#/login/";
-        }, function(response) {
-            $scope.message = "The user name already exists!";
-            $scope.state = "error";
-            $scope.statusval = response.status;
-            $scope.statustext = response.statusText;
-            $scope.headers = response.headers();
-        });
-
+         Authentication.register($scope.user).then(function(data) {
+        	 $scope.message = AUTH_EVENTS.registerSuccess;
+             $scope.state = "success";
+         }, function () {
+	         $scope.message = AUTH_EVENTS.registerFailed;
+	         $scope.state = "error";
+         });
     }; //register
 
 }]); //Controller

@@ -13,21 +13,6 @@ home.run([ '$rootScope', '$location', 'AUTH_EVENTS', 'Authentication',
 } ]); // run
 
 
-/*app.run(['$rootScope', '$location', 'Auth', function ($rootScope, $location, Auth) {
-    $rootScope.$on('$routeChangeStart', function (event) {
-
-        if (!Auth.isLoggedIn()) {
-            console.log('DENY');
-            event.preventDefault();
-            $location.path('/login');
-        }
-        else {
-            console.log('ALLOW');
-            $location.path('/home');
-        }
-    });
-}]);*/
-
 home.config([ '$routeProvider', function($routeProvider) {
 	$routeProvider.when('/home', {
 		templateUrl : 'webapp/view/home.html',

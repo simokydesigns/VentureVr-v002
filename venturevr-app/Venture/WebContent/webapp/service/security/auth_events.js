@@ -5,7 +5,9 @@ home.constant('AUTH_EVENTS', {
 	  sessionTimeout: 'auth-session-timeout',
 	  notAuthenticated: 'auth-not-authenticated',
 	  authorized: 'auth-token-authorized',
-	  notAuthorized: 'auth-not-authorized'
+	  notAuthorized: 'auth-not-authorized',
+	  registerFailed: "The user name already exists!",
+	  registerSuccess: "You have registered successfully! Please login to create profile."
  });
 
 home.constant('USER_ROLES', {
