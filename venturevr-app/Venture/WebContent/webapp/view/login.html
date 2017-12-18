@@ -1,4 +1,4 @@
-<section id="wrap">
+<section>
  <h2>Login</h2>
  
  <div class="container" ng-controller="RegistrationController">
@@ -13,10 +13,10 @@
     </div>
 
     <fieldset>
-      <input type="text" name="userName" placeholder="User Name"
-       ng-model="user.userName" ng-required="true">
+      <input type="text" name="username" placeholder="User Name"
+       ng-model="user.username" ng-required="true">
       <p class="error validationerror"
-      ng-show="myform.userName.$invalid && myform.userName.$touched">
+      ng-show="myform.username.$invalid && myform.username.$touched">
       Must be a valid user name</p>
 
 

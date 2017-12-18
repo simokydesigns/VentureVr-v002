@@ -32,7 +32,7 @@ public class Account {
 	@Column(name="bio")
 	private String bio;
 	@Column(name="user_name")
-	private String userName;
+	private String username;
 	@Column(name="acc_details")
 	private String accDetails;
 	@Column(name="date_account_created")
@@ -43,7 +43,7 @@ public class Account {
 	}
 
 	public Account(String lastName, String firstName, String address, String contactNo, String email, String bio,
-			String userName, String accDetails) {
+			String username, String accDetails) {
 		super();
 		this.lastName = lastName;
 		this.firstName = firstName;
@@ -51,7 +51,7 @@ public class Account {
 		this.contactNo = contactNo;
 		this.email = email;
 		this.bio = bio;
-		this.userName = userName;
+		this.username = username;
 		this.accDetails = accDetails;
 	}
 
@@ -111,12 +111,12 @@ public class Account {
 		this.bio = bio;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getAccDetails() {
@@ -138,7 +138,7 @@ public class Account {
 	@Override
 	public String toString() {
 		return "Account [accId=" + accId + ", lastName=" + lastName + ", firstName=" + firstName + ", address="
-				+ address + ", contactNo=" + contactNo + ", email=" + email + ", bio=" + bio + ", userName=" + userName
+				+ address + ", contactNo=" + contactNo + ", email=" + email + ", bio=" + bio + ", username=" + username
 				+ ", accDetails=" + accDetails + ", dateAccountCreated=" + dateAccountCreated + "]";
 	}
 	

@@ -14,12 +14,12 @@ public interface UserRepository extends JpaRepository<User, Long>{
   
 	User findByUserId (long userId); 
 	
-	User findOneByUserName(String userName);
+	User findOneByUsername(String username);
       
       @Transactional
       List<User> deleteUserByUserId(long userId);
       
       @Transactional
-      List<User> deleteUserByUserName(String userName);
+      List<User> deleteUserByUsername(String username);
            
 }

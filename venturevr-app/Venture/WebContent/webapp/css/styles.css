@@ -1,19 +1,12 @@
 body {
-	padding-top: 54px;
+	
 }
 
 @media ( min-width : 992px) {
 	body {
-		padding-top: 56px;
+		
 	}
 }
-
-#wrap {
-	min-height: 768px;
-}
-/* .container{
-	width: 100%;
-} */
 
 .maxImageSize {
 	height: 200px;
@@ -80,11 +73,6 @@ input.ng-valid.ng-touched {
   background: gray;
 }
 
-.error {
-  color: red;
-  padding-bottom: 10px;
-}
-
 .btn {
     display: inline-block;
     padding: 12px 24px;
@@ -119,8 +107,6 @@ input.ng-valid.ng-touched {
   background-size: 20px 20px;
   padding: 5px 5px 5px 50px;
 }
-
-/*buttons*/
 
 fieldset {
   margin: 10px 0;

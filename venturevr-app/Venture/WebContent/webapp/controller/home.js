@@ -23,3 +23,5 @@ userControllers.controller('DetailsController', ['$scope', '$http','$routeParams
 }]);
 
 
+
+

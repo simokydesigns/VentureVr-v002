@@ -7,7 +7,7 @@ public interface AccountRepository extends CrudRepository<Account, Long> {
 
 	Account findAccountByAccId(long accId);
 	
-	Account findByUserName(String username);
+	Account findByUsername(String username);
 	
 	Account findAccountByFirstNameAndLastName(String firstName, String lastName);
 

@@ -48,9 +48,9 @@ public class VentureService {
 	
 	 
  /*   @RequestMapping(method= RequestMethod.POST, value="/userlogin")
-    public Account login(@PathVariable(value="userName")String userName,
+    public Account login(@PathVariable(value="username")String username,
     		@PathVariable(value="password")String password){
-        return this.accountRepo.findAccountByUserNameAndPassword(userName, password);
+        return this.accountRepo.findAccountByUsernameAndPassword(username, password);
     }*/
 	
 }

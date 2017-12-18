@@ -8,7 +8,7 @@ home.factory('Authentication', ['$rootScope', '$location', '$http',
 		let data = sessionStorage.getItem('userToken');
 		
 		return $http({
-		       url: "http://localhost:8080/venture-service/api/userlogin/" + user.userName + "?access_token=" + sessionStorage.getItem('userToken'),
+		       url: "http://localhost:8080/venture-service/api/userlogin/" + user.username + "?access_token=" + sessionStorage.getItem('userToken'),
 		       method: "get",
 		       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		   }).then(function(res) {
@@ -21,7 +21,7 @@ home.factory('Authentication', ['$rootScope', '$location', '$http',
 	  
 	  authService.requireAuth = function (user) {
 			var auth = "http://venture:secret@localhost:8080/venture-service/oauth/token?grant_type=password&" +
-			   "username=" + user.userName + "&password=" + user.password;
+			   "username=" + user.username + "&password=" + user.password;
 			  
 		return $http({
 		       url: auth,
@@ -38,7 +38,8 @@ home.factory('Authentication', ['$rootScope', '$location', '$http',
 	   };//requireAuth
 	   
 	   authService.logout = function () {  
-		   return sessionStorage.clear();
+		   sessionStorage.clear(); 
+		   $location.path('#/login');
 	   };//logout
 	 
 	  authService.isAuthenticated = function () {
@@ -60,13 +61,15 @@ home.factory('Authentication', ['$rootScope', '$location', '$http',
 	  
 	  authService.register = function (user) {  
 	      var dataUser = {
-	              "userName": user.username,
+	              "username": user.username,
 	              "password": user.password
 	          };
 	          
 	         return $http.post('http://localhost:8080/venture-service/api/newuser/', JSON.stringify(dataUser)
 	        		 
-	         ).then(function(res) {});
+	         ).then(function(res) {
+	        	
+	         });
 	  };//register
 	 
 	  return authService;

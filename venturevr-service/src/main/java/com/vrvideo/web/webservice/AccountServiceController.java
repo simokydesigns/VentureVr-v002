@@ -27,7 +27,7 @@ import com.vrvideo.data.repository.AccountRepository;
 		    @RequestMapping(method= RequestMethod.GET, value="/account/{accId}")
 		    public Account getAccountByAccountId(@PathVariable(value="accId")Long accId, Principal principal){
 		    
-		    	Account currentAcc = accountRepo.findByUserName(principal.getName());
+		    	Account currentAcc = accountRepo.findByUsername(principal.getName());
 		    	
 		    	if(currentAcc.getAccId() == accId) {
 		    	
@@ -38,23 +38,23 @@ import com.vrvideo.data.repository.AccountRepository;
 		    	return null;
 		    };
 		    
-		    @RequestMapping(method= RequestMethod.GET, value="/userlogin/{userName}")
-		    public Account getAccountByAccountId(@PathVariable(value="userName")String userName, Principal principal){
+		/*    @RequestMapping(method= RequestMethod.GET, value="/userlogin/{username}")
+		    public Account getAccountByAccountId(@PathVariable(value="username")String username, Principal principal){
 		    
-		    	Account currentAcc = accountRepo.findByUserName(principal.getName());
+		    	Account currentAcc = accountRepo.findByUsername(principal.getName());
 		    	
-		    	if(currentAcc.getUserName().equals(userName)) {
+		    	if(currentAcc.getUsername().equals(username)) {
 		    	
 		        return currentAcc;
 		        
 		    	}else
 		    		
 		    	return null;
-		    };
+		    };*/
 		    
 		    @RequestMapping(value = "/{accId}", method = RequestMethod.DELETE)
 		    public ResponseEntity<Void> deleteAccount(@PathVariable long accId, Principal principal) {
-		    	Account currentAccount = accountRepo.findByUserName(principal.getName());
+		    	Account currentAccount = accountRepo.findByUsername(principal.getName());
 		    	
 		    	if (currentAccount.getAccId() == accId) {
 		    		accountRepo.delete(accId);
@@ -76,7 +76,7 @@ import com.vrvideo.data.repository.AccountRepository;
 		   
 		    	accountRepo.save(new Account(newAccount.getFirstName(), newAccount.getLastName(), 
 		    			newAccount.getAddress(), newAccount.getContactNo(), newAccount.getEmail(), 
-		    			newAccount.getBio(), newAccount.getUserName(), newAccount.getAccDetails()));	    	
+		    			newAccount.getBio(), newAccount.getUsername(), newAccount.getAccDetails()));	    	
 		    }
 		    
 }

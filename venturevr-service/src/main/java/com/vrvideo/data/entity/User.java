@@ -26,7 +26,7 @@ public class User implements UserDetails {
 	private Long userId;
 	
 	@Column(name = "user_name", nullable = false, unique = true)
-	private String userName;
+	private String username;
 	
 	@Column(name = "password", nullable = false)
 	private String password;
@@ -39,9 +39,9 @@ public class User implements UserDetails {
 		super();
 	}
 
-	public User(String userName, String password, boolean enabled) {
+	public User(String username, String password, boolean enabled) {
 		super();
-		this.userName = userName;
+		this.username = username;
 		this.password = password;
 		this.enabled = enabled;
 	}
@@ -82,10 +82,10 @@ public class User implements UserDetails {
 
 	@Override
 	public String getUsername() {
-		return userName;
+		return username;
 	}
 	
-	public String getUserName() {
-		return userName;
-	}
+/*	public String getUserName() {
+		return username;
+	}*/
 }
