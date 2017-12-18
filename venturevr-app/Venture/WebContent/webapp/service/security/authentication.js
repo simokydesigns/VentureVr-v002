@@ -71,6 +71,26 @@ home.factory('Authentication', ['$rootScope', '$location', '$http',
 	        	
 	         });
 	  };//register
+	  
+	  authService.newProfile = function (user) { 
+		  
+		  let username =  sessionStorage.getItem('user');
+		  
+	      var newuser = {"lastName":user.lastName,
+	    	  "firstName":user.firstName,
+	    	  "address":user.address,
+	    	  "contactNo":user.contactNo,
+	    	  "email":user.email,
+	    	  "bio":user.bio,
+	    	  "username": username,
+	    	  "accDetails":user.accDetails};
+	          
+	         return $http.post('http://localhost:8080/venture-service/api/newacc/', JSON.stringify(newuser)
+	        		 
+	         ).then(function(res) {
+	        	
+	         });
+	  };//register
 	 
 	  return authService;
 	  

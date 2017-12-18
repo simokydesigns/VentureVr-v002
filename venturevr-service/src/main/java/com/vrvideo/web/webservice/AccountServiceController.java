@@ -1,6 +1,7 @@
 package com.vrvideo.web.webservice;
 
 import java.security.Principal;
+import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mysql.jdbc.exceptions.MySQLDataException;
 import com.vrvideo.data.entity.Account;
 import com.vrvideo.data.repository.AccountRepository;
 
@@ -38,19 +40,6 @@ import com.vrvideo.data.repository.AccountRepository;
 		    	return null;
 		    };
 		    
-		/*    @RequestMapping(method= RequestMethod.GET, value="/userlogin/{username}")
-		    public Account getAccountByAccountId(@PathVariable(value="username")String username, Principal principal){
-		    
-		    	Account currentAcc = accountRepo.findByUsername(principal.getName());
-		    	
-		    	if(currentAcc.getUsername().equals(username)) {
-		    	
-		        return currentAcc;
-		        
-		    	}else
-		    		
-		    	return null;
-		    };*/
 		    
 		    @RequestMapping(value = "/{accId}", method = RequestMethod.DELETE)
 		    public ResponseEntity<Void> deleteAccount(@PathVariable long accId, Principal principal) {
@@ -69,14 +58,20 @@ import com.vrvideo.data.repository.AccountRepository;
 		    public Iterable<Account> getAllAccounts(){
 		        return this.accountRepo.findAll();
 	        };
+	        
 	
 		    @RequestMapping(method= RequestMethod.POST, consumes = "application/json", value="/newacc")
 		    @ResponseBody
-		    public void addNewAccount(@RequestBody Account newAccount){
-		   
-		    	accountRepo.save(new Account(newAccount.getFirstName(), newAccount.getLastName(), 
+		    public void addNewAccount(@RequestBody Account newAccount, Principal principal) throws SQLException{	
+		    			   
+		    try {
+						accountRepo.save(new Account(newAccount.getFirstName(), newAccount.getLastName(), 
 		    			newAccount.getAddress(), newAccount.getContactNo(), newAccount.getEmail(), 
-		    			newAccount.getBio(), newAccount.getUsername(), newAccount.getAccDetails()));	    	
+		    			newAccount.getBio(), newAccount.getUsername(), newAccount.getAccDetails()));
+						
+				} catch (Exception e) {
+					throw new MySQLDataException("error in addNewAccount" + e);
+				}	    	
 		    }
 		    
 }

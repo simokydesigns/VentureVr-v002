@@ -51,5 +51,16 @@ home.controller('RegistrationController', ['$scope', '$rootScope', '$http', 'AUT
 	         $scope.state = "error";
          });
     }; //register
+    
+    $scope.createProfile = function() {
+        Authentication.newProfile($scope.user).then(function(data) {
+       	 $scope.message = AUTH_EVENTS.registerSuccess;
+            $scope.state = "success";
+            $scope.auth();
+        }, function () {
+	         $scope.message = AUTH_EVENTS.registerFailed;
+	         $scope.state = "error";
+        });
+   }; //register
 
 }]); //Controller
