@@ -14,7 +14,7 @@
 
     <fieldset>
       <input type="text" name="lastName" placeholder="Last Name"
-       ng-model="user.lastName" ng-required="true">
+       ng-model="user.lastName" ng-required="true" value="{{ profile.data.lastName }}">
       <p class="error validationerror"
       ng-show="myform.lastName.$invalid && myform.lastName.$touched">
       Last Name is required</p>
