@@ -8,6 +8,16 @@ body {
 	}
 }
 
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+}
+
 .maxImageSize {
 	height: 200px;
 }
@@ -111,3 +121,49 @@ input.ng-valid.ng-touched {
 fieldset {
   margin: 10px 0;
 }
+
+h1{
+  color: blue;
+}
+
+#video_player_box{
+	width: 550px;
+	height: 320px; 
+	background-color: #000;
+	margin: 0px auto;
+}
+
+/* #video_player_1{
+ 	width: 550px;
+	height: 320px; 
+} */
+
+#view_btn{
+    width: 80px;	
+	background-color: red;
+}
+
+#video_controls_bar{	
+	background-color: #333; 
+	padding: 10px;
+}
+#video_slider{
+    width: 100px;
+}
+#video_player_1, span{
+   color: #FFF;
+}
+#mute_btn{
+   width: 50px;
+   margin-left: 70px;
+}
+
+#sound_slider{
+    width: 100px;
+
+}
+
+a-scene {
+ display: block; width: 550px; height: 320px;
+}
+

@@ -26,12 +26,12 @@ import com.vrvideo.data.repository.AccountRepository;
 		    private AccountRepository accountRepo;
 
 		    
-		    @RequestMapping(method= RequestMethod.GET, value="/account/{accId}")
-		    public Account getAccountByAccountId(@PathVariable(value="accId")Long accId, Principal principal){
+		    @RequestMapping(method= RequestMethod.GET, value="/account/{username}")
+		    public Account getAccountByUsername(@PathVariable(value="username")String username, Principal principal){
 		    
 		    	Account currentAcc = accountRepo.findByUsername(principal.getName());
 		    	
-		    	if(currentAcc.getAccId() == accId) {
+		    	if(currentAcc.getUsername().equals(username)) {
 		    	
 		        return currentAcc;
 		        
@@ -41,7 +41,7 @@ import com.vrvideo.data.repository.AccountRepository;
 		    };
 		    
 		    
-		    @RequestMapping(value = "/{accId}", method = RequestMethod.DELETE)
+		    @RequestMapping(value = "/delete/{accId}", method = RequestMethod.DELETE)
 		    public ResponseEntity<Void> deleteAccount(@PathVariable long accId, Principal principal) {
 		    	Account currentAccount = accountRepo.findByUsername(principal.getName());
 		    	

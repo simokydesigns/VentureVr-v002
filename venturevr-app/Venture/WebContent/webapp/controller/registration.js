@@ -28,14 +28,22 @@ home.controller('RegistrationController', ['$scope', '$rootScope', '$http', 'AUT
         Authentication.login($scope.user).then(function(user) {
         	$scope.message =AUTH_EVENTS.loginSuccess;
             $scope.setCurrentUser(user.username);
-            window.location = "#/profile"; 
-            
+            $scope.isProfile();
           }, function () {
         	  $scope.message = AUTH_EVENTS.loginFailed;
           });
           
     };
-
+    
+    $scope.isProfile = function() {
+    	    Authentication.isProfileExists().then(function(data) {
+ 		    $scope.profile = data; 
+ 		    window.location = "#/edit_profile";
+    	 }, function () {
+    		window.location = "#/profile";
+       });
+    };
+   
     $scope.logout = function() {
          Authentication.logout();
   		    $scope.message =AUTH_EVENTS.auth-logout-success;  
@@ -54,9 +62,9 @@ home.controller('RegistrationController', ['$scope', '$rootScope', '$http', 'AUT
     
     $scope.createProfile = function() {
         Authentication.newProfile($scope.user).then(function(data) {
-       	 $scope.message = AUTH_EVENTS.registerSuccess;
+       	    $scope.message = AUTH_EVENTS.registerSuccess;
             $scope.state = "success";
-            $scope.auth();
+            window.location = "#/edit_profile";
         }, function () {
 	         $scope.message = AUTH_EVENTS.registerFailed;
 	         $scope.state = "error";

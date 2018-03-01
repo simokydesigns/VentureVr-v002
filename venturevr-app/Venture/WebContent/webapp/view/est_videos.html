@@ -1,40 +1,38 @@
 <section>
-    <div class="container">
+  <div class="container">
     <br>
 	    <h2>VR Video Directory</h2>
-    <!-- 	  <div>
-		  		<a-scene class="fullscreen" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="">
-				<a-assets>
-				<video id="video" src="webapp/video/vr_roller_coaster" crossorigin="anonymous"></video>
-				</a-assets>
-				<a-videosphere src="#video" rotation="0 180 0" position="" scale="" visible="" material="" geometry=""></a-videosphere>
-				<canvas  data-aframe-canvas="true" width="1322" height="150" style="width: 1322px; height: 150px;">
-				</canvas>
-				<div class="a-enter-vr" aframe-injected="">
-				<button class="a-enter-vr-button" title="" aframe-injected=""></button>
-				</div>
-				<div class="a-orientation-modal a-hidden" aframe-injected="">
-				<button aframe-injected="">Exit VR</button>
-				</div>
-				<a-entity position="" data-aframe-default-camera="" camera="" wasd-controls="" rotation="" look-controls="" aframe-injected="" scale="" visible="">
-				</a-entity>
-				<a-entity light="" data-aframe-default-light="" aframe-injected="" position="" rotation="" scale="" visible="">
-				</a-entity>
-				<a-entity light="" position="" data-aframe-default-light="" aframe-injected="" rotation="" scale="" visible=""></a-entity>
-                </a-scene>
-        </div>  -->
 	
       <div class="row text-center text-lg-left">
-
-        <div class="col-lg-4 col-lg-4 col-lg-4" ng-animate="'animate'" ng-repeat="item in videos"> 
-         <div><label>{{item.title}}</label></div>
-          
-	             <video id="video" width="320" height="240" controls="controls" 
-	             preload="auto" ng-src="{{item.path + item.title}}" 
-	             type="video/{{item.fileType}}">
-	             </video>
-          
+      
+        <div id="video_player_box">
+       
+	        <div ng-animate="'animate'" ng-repeat="item in videos"> 
+	       <!--   <div><label>{{item.title}}</label></div> -->
+	        
+	         	 <a-scene embedded vr-mode-ui='enabled: false'>
+	               <a-assets>
+				     <video id="video_player_1" loop="false" crossorigin="anonymous"
+					  ng-src="{{item.path + item.title}}" type="video/{{item.fileType}}" webkit-playsinline>
+			         </video> 
+			       </a-assets>
+			  
+			       <a-videosphere src="#video_player_1"></a-videosphere> 
+			  
+			      </a-scene> 
+		            
+	         </div>
+	         <div id="video_controls_bar">
+				   <button id="play_pause_btn">Play</button>
+				   <input id="video_slider" type="range" min="0" max="100" step="0" value="1"></input>
+				   <span id="cur_time_text"></span><span id="dur_time_text"></span>
+				   <button id="mute_btn">Mute</button>
+				   <input id="sound_slider" type="range" min="0" max="100" step="0" value="100"></input>
+			       <button id="view_btn">360°</button>
+			</div>
         </div>  
       </div>
-    </div> 
- </section>
+   </div>
+   
+</section>
+ 

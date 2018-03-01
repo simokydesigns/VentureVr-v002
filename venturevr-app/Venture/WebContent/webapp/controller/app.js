@@ -43,6 +43,10 @@ home.config([ '$routeProvider', function($routeProvider) {
 		templateUrl : 'webapp/view/profile.html',
 		controller : 'ProfileController',
 		isRestricted: true
+	}).when('/edit_profile', {
+		templateUrl : 'webapp/view/edit_profile.html',
+		controller : 'ProfileController',
+		isRestricted: true
 	}).otherwise({
 		redirectTo : '/home'
 	})

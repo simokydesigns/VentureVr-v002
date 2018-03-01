@@ -1,0 +1,67 @@
+<section>
+  <div class="container" ng-controller="RegistrationController">
+  <form name="myform"
+    ng-submit="createProfile()"
+    novalidate>
+
+    <div class="textintro">
+      <h1>Your profile!</h1>
+      <p class="message" 
+        ng-show="message"> {{ message }}</p>
+    </div>
+    
+    <h1>{{ profile.data.lastName }}</h1>
+
+    <fieldset>
+      <input type="text" name="lastName" placeholder="Last Name"
+       ng-model="user.lastName" ng-required="true">
+      <p class="error validationerror"
+      ng-show="myform.lastName.$invalid && myform.lastName.$touched">
+      Last Name is required</p>
+
+
+      <input type="text" name="firstName" placeholder="First Name"
+      ng-model="user.firstName" ng-required="true">
+      <p class="error validationerror"
+      ng-show="myform.firstName.$invalid && myform.firstName.$touched">
+      First Name is required</p>
+      
+      <input type="text" name="address" placeholder="Address"
+      ng-model="user.address" ng-required="true">
+      <p class="error validationerror"
+      ng-show="myform.address.$invalid && myform.address.$touched">
+      Address is required</p>
+
+
+      <input type="text" name="contactNo" placeholder="Contact-No"
+      ng-model="user.contactNo" ng-required="true">
+      <p class="error validationerror"
+      ng-show="myform.contactNo.$invalid && myform.contactNo.$touched">
+      Contact-No is required</p>
+      
+      <input type="email" name="email" placeholder="Email"
+       ng-model="user.email" ng-required="true">
+      <p class="error validationerror"
+      ng-show="myform.email.$invalid && myform.email.$touched">
+      Must be a valid Email</p>
+
+
+      <textarea type="text" rows="4" cols="50" name="bio" placeholder="bio"
+      ng-model="user.bio" ng-required="false">
+      </textarea>
+      
+      <input type="password" name="accDetails" placeholder="Card-no ---- ---- ---- ----"
+      ng-model="user.accDetails" ng-required="true">
+      <p class="error validationerror"
+      ng-show="myform.accDetails.$invalid && myform.accDetails.$touched">
+      Card-no is required</p>
+
+    </fieldset>
+
+    <button type="submit" class="btn"
+      ng-disabled="myform.$invalid">Login</button>
+    <p>or <a ng-href="#/register">register</a></p>
+  </form>
+ </div> 
+ 
+</section> 
