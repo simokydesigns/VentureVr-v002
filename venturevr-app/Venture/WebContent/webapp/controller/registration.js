@@ -37,10 +37,14 @@ home.controller('RegistrationController', ['$scope', '$rootScope', '$http', 'AUT
     
     $scope.isProfile = function() {
     	    Authentication.isProfileExists().then(function(data) {
- 		    $scope.profile = data; 
+ 		    $scope.profile = data;
+ 		    if(data.data == ""){
+ 		    	window.location = "#/profile";
+ 		    }else
  		    window.location = "#/edit_profile";
-    	 }, function () {
-    		window.location = "#/profile";
+ 		     
+    	 }, function (error) {
+    		console.log(error)
        });
     };
    
@@ -70,5 +74,15 @@ home.controller('RegistrationController', ['$scope', '$rootScope', '$http', 'AUT
 	         $scope.state = "error";
         });
    }; //register
+   
+   $scope.editProfile = function() {
+       Authentication.editProfile($scope.profile).then(function(data) {
+      	    $scope.message = AUTH_EVENTS.registerSuccess;
+           $scope.state = "success";
+       }, function () {
+	         $scope.message = AUTH_EVENTS.registerFailed;
+	         $scope.state = "error";
+       });
+  }; //register
 
 }]); //Controller

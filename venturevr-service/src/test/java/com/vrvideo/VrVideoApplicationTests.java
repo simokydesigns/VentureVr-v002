@@ -1,4 +1,4 @@
-package com.vrvideo;
+/*package com.vrvideo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,4 +13,4 @@ public class VrVideoApplicationTests {
 	public void contextLoads() {
 	}
 
-}
+}*/

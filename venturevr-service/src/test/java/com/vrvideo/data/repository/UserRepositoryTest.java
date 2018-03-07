@@ -1,4 +1,4 @@
-package com.vrvideo.data.repository;
+/*package com.vrvideo.data.repository;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,4 +31,4 @@ public class UserRepositoryTest {
 		
 	}
 	
-}
+}*/

@@ -98,16 +98,16 @@ home.factory('Authentication', ['$rootScope', '$location', '$http',
 		  
 		  let username =  sessionStorage.getItem('user');
 		  
-	      var newuser = {"lastName":profile.lastName,
-	    	  "firstName":profile.firstName,
-	    	  "address":profile.address,
-	    	  "contactNo":profile.contactNo,
-	    	  "email":profile.email,
-	    	  "bio":profile.bio,
+	      var newuser = {"lastName":profile.data.lastName,
+	    	  "firstName":profile.data.firstName,
+	    	  "address":profile.data.address,
+	    	  "contactNo":profile.data.contactNo,
+	    	  "email":profile.data.email,
+	    	  "bio":profile.data.bio,
 	    	  "username": username,
-	    	  "accDetails":profile.accDetails};
+	    	  "accDetails":profile.data.accDetails};
 	          
-	         return $http.put('http://localhost:8080/venture-service/api/newacc/', JSON.stringify(newuser)
+	         return $http.put('http://localhost:8080/venture-service/api/acc/' + username, JSON.stringify(newuser)
 	        		 
 	         ).then(function(res) {
 	        	 

@@ -1,4 +1,4 @@
-package com.vrvideo.data.repository;
+/*package com.vrvideo.data.repository;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -8,4 +8,4 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({VideoRepositoryTest.class, UserRepositoryTest.class})
 public class AllTests {
 
-}
+}*/
