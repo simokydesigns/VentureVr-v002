@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vrvideo.config.AuthorizationConfig;
-import com.vrvideo.data.entity.Account;
 import com.vrvideo.data.entity.User;
 import com.vrvideo.data.repository.UserRepository;
 

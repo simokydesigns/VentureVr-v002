@@ -1,5 +1,5 @@
-home.factory('Authentication', ['$rootScope', '$location', '$http', 
-	function ($rootScope, $location, $http) {
+home.factory('Authentication', ['$location', '$http', 
+	function ($location, $http) {
 	
 	var authService = {};
 	  
@@ -14,7 +14,7 @@ home.factory('Authentication', ['$rootScope', '$location', '$http',
 		   }).then(function(res) {
 			  return res.data;
 		   }, function(error) {
-		       console.log(error)
+		       console.log(error);
 		   });
 
 	  }; //login
@@ -28,12 +28,11 @@ home.factory('Authentication', ['$rootScope', '$location', '$http',
 		       method: "post",
 		       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		       }).then(function (res) {
-		    	console.log(res.data.access_token);
 		        let data = res.data.access_token;
 		    	sessionStorage.setItem('userToken', data);
 		    	return data;
 		       }, function(error) {
-			       console.log(error)
+			       console.log(error);
 			});
 	   };//requireAuth
 	   
@@ -71,29 +70,7 @@ home.factory('Authentication', ['$rootScope', '$location', '$http',
 	        	
 	         });
 	  };//register
-	  
-	  authService.newProfile = function (profile) { 
-		  
-		  let username =  sessionStorage.getItem('user');
-		  
-	      var newuser = {"lastName":profile.lastName,
-	    	  "firstName":profile.firstName,
-	    	  "address":profile.address,
-	    	  "contactNo":profile.contactNo,
-	    	  "email":profile.email,
-	    	  "bio":profile.bio,
-	    	  "username": username,
-	    	  "accDetails":profile.accDetails};
-	          
-	         return $http.post('http://localhost:8080/venture-service/api/newacc/', JSON.stringify(newuser)
-	        		 
-	         ).then(function(res) {
-	        	 
-	        	 return res;
-	        	
-	         });
-	  };//register
-	  
+	  	  
      authService.editProfile = function (profile) { 
 		  
 		  let username =  sessionStorage.getItem('user');
@@ -107,7 +84,8 @@ home.factory('Authentication', ['$rootScope', '$location', '$http',
 	    	  "username": username,
 	    	  "accDetails":profile.data.accDetails};
 	          
-	         return $http.put('http://localhost:8080/venture-service/api/acc/' + username, JSON.stringify(newuser)
+	         return $http.put('http://localhost:8080/venture-service/api/acc/' + username 
+	        		 + "?access_token=" + sessionStorage.getItem('userToken'), JSON.stringify(newuser)
 	        		 
 	         ).then(function(res) {
 	        	 

@@ -1,5 +1,5 @@
-home.controller('RegistrationController', ['$scope', '$rootScope', '$http', 'AUTH_EVENTS', 'Authentication',
-	function($scope, $rootScope, $http, AUTH_EVENTS, Authentication) {
+home.controller('RegistrationController', ['$scope', 'AUTH_EVENTS', 'Authentication',
+	function($scope, AUTH_EVENTS, Authentication) {
 	
 	$scope.setCurrentUser = function (user) {
 		// $scope.currentUser = user;
@@ -8,10 +8,6 @@ home.controller('RegistrationController', ['$scope', '$rootScope', '$http', 'AUT
 	
 	$scope.currentUser = sessionStorage.getItem('user');
 	
-	/*$scope.getCurrentUser = function () {
-	     $scope.currentUser = sessionStorage.getItem('user');
-		 return $scope.currentUser;
-	};*/
 	
 	$scope.auth = function() {
 
@@ -28,24 +24,11 @@ home.controller('RegistrationController', ['$scope', '$rootScope', '$http', 'AUT
         Authentication.login($scope.user).then(function(user) {
         	$scope.message =AUTH_EVENTS.loginSuccess;
             $scope.setCurrentUser(user.username);
-            $scope.isProfile();
+            window.location = "#/edit_profile";
           }, function () {
         	  $scope.message = AUTH_EVENTS.loginFailed;
           });
           
-    };
-    
-    $scope.isProfile = function() {
-    	    Authentication.isProfileExists().then(function(data) {
- 		    $scope.profile = data;
- 		    if(data.data == ""){
- 		    	window.location = "#/profile";
- 		    }else
- 		    window.location = "#/edit_profile";
- 		     
-    	 }, function (error) {
-    		console.log(error)
-       });
     };
    
     $scope.logout = function() {
@@ -64,25 +47,4 @@ home.controller('RegistrationController', ['$scope', '$rootScope', '$http', 'AUT
          });
     }; //register
     
-    $scope.createProfile = function() {
-        Authentication.newProfile($scope.user).then(function(data) {
-       	    $scope.message = AUTH_EVENTS.registerSuccess;
-            $scope.state = "success";
-            window.location = "#/edit_profile";
-        }, function () {
-	         $scope.message = AUTH_EVENTS.registerFailed;
-	         $scope.state = "error";
-        });
-   }; //register
-   
-   $scope.editProfile = function() {
-       Authentication.editProfile($scope.profile).then(function(data) {
-      	    $scope.message = AUTH_EVENTS.registerSuccess;
-           $scope.state = "success";
-       }, function () {
-	         $scope.message = AUTH_EVENTS.registerFailed;
-	         $scope.state = "error";
-       });
-  }; //register
-
 }]); //Controller

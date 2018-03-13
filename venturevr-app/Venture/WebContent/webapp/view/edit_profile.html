@@ -1,65 +1,79 @@
 <section>
-  <div class="container" ng-controller="RegistrationController">
-  <form name="myform"
-    ng-submit="editProfile()"
-    novalidate>
+  <div class="container" ng-controller="ProfileController">
+     <div >
 
-    <div class="textintro">
-      <h1>Your profile!</h1>
-      <p class="message" 
-        ng-show="message"> {{ message }}</p>
-    </div>
-
-    <fieldset>
-      <input type="text" name="lastName" placeholder="Last Name"
-       ng-model="profile.data.lastName" ng-required="true">
-      <p class="error validationerror"
-      ng-show="myform.lastName.$invalid && myform.lastName.$touched">
-      Last Name is required</p>
-
-
-      <input type="text" name="firstName" placeholder="First Name"
-      ng-model="profile.data.firstName" ng-required="true">
-      <p class="error validationerror"
-      ng-show="myform.firstName.$invalid && myform.firstName.$touched">
-      First Name is required</p>
-      
-      <input type="text" name="address" placeholder="Address"
-      ng-model="profile.data.address" ng-required="true">
-      <p class="error validationerror"
-      ng-show="myform.address.$invalid && myform.address.$touched">
-      Address is required</p>
-
-
-      <input type="text" name="contactNo" placeholder="Contact-No"
-      ng-model="profile.data.contactNo" ng-required="true">
-      <p class="error validationerror"
-      ng-show="myform.contactNo.$invalid && myform.contactNo.$touched">
-      Contact-No is required</p>
-      
-      <input type="email" name="email" placeholder="Email"
-       ng-model="profile.data.email" ng-required="true">
-      <p class="error validationerror"
-      ng-show="myform.email.$invalid && myform.email.$touched">
-      Must be a valid Email</p>
-
-
-      <textarea type="text" rows="4" cols="50" name="bio" placeholder="bio"
-      ng-model="profile.data.bio" ng-required="false">
-      </textarea>
-      
-      <input type="password" name="accDetails" placeholder="Card-no ---- ---- ---- ----"
-      ng-model="profile.data.accDetails" ng-required="true">
-      <p class="error validationerror"
-      ng-show="myform.accDetails.$invalid && myform.accDetails.$touched">
-      Card-no is required</p>
-
-    </fieldset>
-
-    <button type="submit" class="btn"
-      ng-disabled="myform.$invalid">Login</button>
-    <p>or <a ng-href="#/register">register</a></p>
-  </form>
- </div> 
+	  <form name="myform" 
+	    ng-submit="editProfile()"
+	    novalidate>
+	
+	    <div class="textintro">
+	      <h1>Your profile!</h1>
+	      <p class="message" 
+	        ng-show="message"> {{ message }}</p>
+	    </div>
+	
+	    <fieldset ng-disabled="isEditable">
+	      <label class="col-lg-5">First Name: <input class="set-input-height" type="text" name="lastName"
+	       ng-model="profile.data.lastName" ng-required="true"></label>
+	      <p class="error validationerror"
+	      ng-show="myform.lastName.$invalid && myform.lastName.$touched">
+	      Last Name is required</p>
+	
+	
+	      <label class="col-lg-5">Last Name:<input class="set-input-height" type="text" name="firstName"
+	      ng-model="profile.data.firstName" ng-required="true"></label>
+	      <p class="error validationerror"
+	      ng-show="myform.firstName.$invalid && myform.firstName.$touched">
+	      First Name is required</p><br>
+	      
+	      <label class="col-lg-10">Address:<input class="set-input-height" type="text" name="address"
+	      ng-model="profile.data.address" ng-required="true"></label>
+	      <p class="error validationerror"
+	      ng-show="myform.address.$invalid && myform.address.$touched">
+	      Address is required</p><br>
+	
+	
+	      <label class="col-lg-5">Contact No:<input class="set-input-height" type="text" name="contactNo"
+	      ng-model="profile.data.contactNo" ng-required="true"></label>
+	      <p class="error validationerror"
+	      ng-show="myform.contactNo.$invalid && myform.contactNo.$touched">
+	      Contact-No is required</p>
+	      
+	      <label class="col-lg-5">Email:<input class="set-input-height" type="email" name="email"
+	       ng-model="profile.data.email" ng-required="true"></label>
+	      <p class="error validationerror"
+	      ng-show="myform.email.$invalid && myform.email.$touched">
+	      Must be a valid Email</p><br>
+	
+	
+	      <label class="col-lg-10">Bio:<textarea type="text" rows="4" cols="50" name="bio" placeholder="bio"
+	      ng-model="profile.data.bio" ng-required="false">
+	      </textarea> </label><br>
+	      
+	      <label class="col-lg-5">Card Details:<input class="set-input-height" type="password" name="accDetails" placeholder="Card-no ---- ---- ---- ----"
+	      ng-model="profile.data.accDetails" ng-required="true"></label>
+	      <p class="error validationerror"
+	      ng-show="myform.accDetails.$invalid && myform.accDetails.$touched">
+	      Card-no is required</p>
+	  
+	    </fieldset>
+	
+	     <div class="col-lg-4"><button type="submit" class="btn" ng-disabled="myform.$invalid">Submit</button>
+	    <!--  <button class="btn" type="button" ng-model="isEditable">Edit</button> -->
+	    <label>Edit Profile: <input type="checkbox" ng-model="isEditable"></label></div>
+	  </form><br>
+    </div> 
+  
+    <div class="col-lg-5">
+  
+	
+	<form ng-submit="upLoadVideo()" method="post" enctype="multipart/form-data">
+	     <input type = "file" file-model="uploadedVideo"/>
+	     <br>
+	     <br>
+	     <button type="submit" class="btn"><span class="glyphicon glyphicon-upload">Upload File</span></button>
+	   </form>  
+  </div> 
+</div>
  
 </section> 

@@ -1,5 +1,6 @@
 var home = angular.module('home', [ 'ngRoute', 'usersControllers', ]);
 
+
 home.run([ '$rootScope', '$location', '$timeout', 'AUTH_EVENTS', 'Authentication', 
 	function($rootScope, $location, $timeout, AUTH_EVENTS, Authentication) {
 	$rootScope.$on('$routeChangeStart', function(event, next) {
